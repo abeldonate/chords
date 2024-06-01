@@ -1,0 +1,19 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h1 class="title">{{ song.name }}</h1>
+        <h2 class="title">{{ song.artist }}</h2>
+        <h3 class="title">Tune: {{ song.tune }}</h3>
+            <div class="text">
+                <div class="columns">
+					<div class="column has-text-left">
+                        <div class="text">{{ song.song_html|safe }}<div> 
+					</div>
+					<div class="column"></div>
+				</div>
+      </div>
+    </section>
+  </body>

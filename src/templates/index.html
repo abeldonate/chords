@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h1 class="title">Chords</h1>
+            <div class="text">
+                <label class="label">List of chords</label>
+                <div class="columns">
+					<div class="column has-text-centered is-two-thirds">
+                        {% for song in songs_list %}
+						<a class="button is-primary is-medium is-fullwidth my-3" href="{{ song }}"">{{ song }}</a>
+                        {% endfor %}
+					</div>
+					<div class="column"></div>
+				</div>
+      </div>
+    </section>
+  </body>
