@@ -1,12 +1,35 @@
 import markdown
 import os
 import yaml
+from markdown.extensions import Extension
+from markdown.postprocessors import Postprocessor
+import re
 
+# Read the config
 with open('config.yaml', 'r') as f:
     config_data = yaml.load(f, Loader=yaml.SafeLoader)
-
 MD_PATH = config_data.get("MD_PATH")
-#HTML_PATH = "src/static/songs-html/"
+
+# Custom MD
+class CodeTagExtension(Extension):
+    def extendMarkdown(self, md):
+        md.registerExtension(self)
+        md.postprocessors.register(CodeTagPostprocessor(md), 'codetag', 175)
+
+class CodeTagPostprocessor(Postprocessor):
+    def run(self, text):
+        # Regex to find the pattern [string]
+        pattern = re.compile(r'\[(.+?)\]')
+        # Replace with <code>string</code>
+        return re.sub(pattern, r'<code>\1</code>', text)
+
+def make_extension(**kwargs):
+    return CodeTagExtension(**kwargs)
+
+
+
+
+
 
 class Song:
     def __init__(self, name: str, artist: str, tune: str, song_html: str):
@@ -15,6 +38,10 @@ class Song:
         self.tune = tune
         self.song_html = song_html
 
+
+# Transform from name of md file to title
+def name_to_title(name):
+    return name.replace("_", " ").replace("-", " - ").title()
 
 # Returns the list of songs
 def get_songs_list():
@@ -25,9 +52,9 @@ def get_songs_list():
 
     
 def md_to_html(md_song) -> str:
-    html_text = markdown.markdown(md_song)
+    html_text = markdown.markdown(md_song, xtensions=[CodeTagExtension()])
     # Leave spaces
-    html_text = "<pre>\n" + html_text + "\n</pre>"
+    html_text = "<pre>\n" + html_text.replace("<pre>", "").replace("</pre>", "") + "\n</pre>"
 
     return html_text
 
@@ -60,5 +87,5 @@ print(s.artist)
 print(s.tune)
 print(s.song_html)
 """
-
-print(get_songs_list()[0])
+s = md_to_Song("stick_season-noah_kahan")
+print(s.song_html)

@@ -8,9 +8,9 @@
             <div class="text">
                 <label class="label">List of chords</label>
                 <div class="columns">
-					<div class="column has-text-centered is-two-thirds">
+					<div class="column has-text-left is-two-thirds">
                         {% for song in songs_list %}
-						<a class="button is-primary is-medium is-fullwidth my-3" href="{{ song }}"">{{ song }}</a>
+						<a class="button is-primary is-medium is-fullwidth my-3" href="{{ song }}"">{{ name_to_title(song) }}</a>
                         {% endfor %}
 					</div>
 					<div class="column"></div>
