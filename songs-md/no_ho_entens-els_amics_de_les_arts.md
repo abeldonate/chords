@@ -4,7 +4,7 @@ Tune: 0
 
 ---
 
-`Em`     `G`
+                    <Em>     <G>
 Today is gonna be the day
 `D`                  `A7sus4`
 That they're gonna throw it back to you

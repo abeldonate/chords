@@ -3,96 +3,95 @@ Artist: Noah Kahan
 Tune: 0
 
 ---
-
-       `A`
+       <A>
 As you promised me that I was more than all the miles combined
-              `E`
+              <E>
 You must have had yourself a change of heart like halfway through the drive
-                 `F#m`
+                 <F#m>
 'Cause your voice trailed off exactly as you passed my exit sign
-`D`
+<D>
 Kept on driving straight and left our future to the right 
 
 
-        `A`
+        <A>
 Now I am stuck between my anger and the blame that I can't face
-            `E`
+            <E>
 And memories are something even smoking weed does not replace
-         `F#m`
+         <F#m>
 And I am terrified of weather 'cause I see you when it rains
-`D`
+<D>
 Doc told me to travel but there's COVID on the planes
 
-     `A/E*`                                               
+     <A/E*>                                               
 And I love Vermont but it's the season of the sticks and I
-`E*`
+<E*>
 Saw your mom, she forgot that I existed
-        `F#m*`
+        <F#m*>
 And it's half my fault but I just like to play the victim
-          `D*`                     `D`
+          <D*>                     <D>
 I'll drink alcohol till my friends come home for Christmas
-        `A`
+        <A>
 And I'll dream each night of some version of you
-      `E`
+      <E>
 That I might not have but I did not lose
-         `F#m`
+         <F#m>
 Now you're tire tracks and one pair of shoes
-       `D`                         `E`                   `A`
+       <D>                         <E>                   <A>
 And I'm split in half but that'll have to do ooh ooh
 
-    `A`
+    <A>
 So I thought that if I piled something good on all my bad
-             `E`
+             <E>
 That I could cancel out the darkness I inherited from dad
-        `F#m`
+        <F#m>
 No, I am no longer funny 'cause I miss the way you laugh
     D
 You once called me forever, now you still can't call me back
 
 
-     `A/E`
+     <A/E>
 And I love Vermont but it's the season of the sticks and I
-`E*`
+<E*>
 Saw your mom, she forgot that I existed
-        `F#m`
+        <F#m>
 And it's half my fault but I just like to play the victim
-          `D`
+          <D>
 I'll drink alcohol till my friends come home for Christmas
-        `A`
+        <A>
 And I'll dream each night of some version of you
-      `E`
+      <E>
 That I might not have but I did not lose
-         `F#m`
+         <F#m>
 Now you're tire tracks and one pair of shoes
-       `D`                         `E`                   `A`
+       <D>                         <E>                   <A>
 And I'm split in half but that'll have to do ooh ooh
 
 
-`A`                  `E`
+<A>                  <E>
 Oh, that'll have to do
-                `F#m`
+                <F#m>
 My other half was you
-                        `D`
+                        <D>
 I hope this pain's just passing through
-      `E`
+      <E>
 But I doubt it
 
 
-     `A/E*`                                                 
+     <A/E*>                                                 
 And I love Vermont but it's the season of the sticks and I 
-`E*`
+<E*>
 Saw your mom, she forgot that I existed
-        `F#m*`
+        <F#m*>
 And it's half my fault but I just like to play the victim
-          `D*`                       `D`
+          <D*>                       <D>
 I'll drink alcohol till my friends come home for Christmas
-        `A`
+        <A>
 And I'll dream each night of some version of you
-      `E`
+      <E>
 That I might not have but I did not lose
-         `F#m`
+         <F#m>
 Now you're tire tracks and one pair of shoes
-       `D`                         `E`
+       <D>                         <E>
 And I'm split in half but that'll have to do
-              `A*`
+              <A*>
 Have to do ooh

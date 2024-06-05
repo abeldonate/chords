@@ -1,1 +1,3 @@
 MD_PATH: songs-md/
+CHORD_OPEN: "<"
+CHORD_CLOSE: ">"

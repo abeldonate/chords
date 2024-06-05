@@ -1,34 +1,15 @@
-import markdown
 import os
 import yaml
-from markdown.extensions import Extension
-from markdown.postprocessors import Postprocessor
 import re
 
 # Read the config
 with open('config.yaml', 'r') as f:
     config_data = yaml.load(f, Loader=yaml.SafeLoader)
+
 MD_PATH = config_data.get("MD_PATH")
-
-# Custom MD
-class CodeTagExtension(Extension):
-    def extendMarkdown(self, md):
-        md.registerExtension(self)
-        md.postprocessors.register(CodeTagPostprocessor(md), 'codetag', 175)
-
-class CodeTagPostprocessor(Postprocessor):
-    def run(self, text):
-        # Regex to find the pattern [string]
-        pattern = re.compile(r'\[(.+?)\]')
-        # Replace with <code>string</code>
-        return re.sub(pattern, r'<code>\1</code>', text)
-
-def make_extension(**kwargs):
-    return CodeTagExtension(**kwargs)
-
-
-
-
+CHORD_OPEN = config_data.get("CHORD_OPEN")
+CHORD_CLOSE = config_data.get("CHORD_CLOSE")
+LETTERS = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
 
 
 class Song:
@@ -52,9 +33,12 @@ def get_songs_list():
 
     
 def md_to_html(md_song) -> str:
-    html_text = markdown.markdown(md_song, xtensions=[CodeTagExtension()])
+    # Parse <Chord>
+    pattern = rf'{CHORD_OPEN}(.*?){CHORD_CLOSE}'
+    html_text = re.sub(pattern, lambda match: f'<code>{match.group(1)}</code>', md_song)
+
     # Leave spaces
-    html_text = "<pre>\n" + html_text.replace("<pre>", "").replace("</pre>", "") + "\n</pre>"
+    html_text = "<pre>\n" + html_text + "\n</pre>"
 
     return html_text
 
@@ -78,14 +62,40 @@ def md_to_Song(song: str) -> Song:
 
     return Song(name = name, artist = artist, tune = tune, song_html = md_to_html(md_song))
 
+def flat_to_sharp(chord):
+    if chord == "Ab" return "G#"
+    if chord == "Bb" return "A#"
+    if chord == "Db" return "C#"
+    if chord == "Eb" return "D#"
+    if chord == "Gb" return "F#"
+
+def transport_chord(chord, tune):
+    if len(chord) == 1:
+        return LETTERS[ (LETTERS.index(chord) + tune) % 12]
+    elif chord[1] == "#":
+        let = chord[0:1]
+        return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
+    elif chord[1] == "b":
+        let = flat_to_sharp(chord[0:1])
+        return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
+    
+    let = chord[0]
+    return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
+    
+
+    
+
+#Transports html to a target relative tune (in semitones)
+def transport_song(text, tune): 
+    pattern = r'<code>(.*?)</code>'
+    
+    # Use re.sub with a lambda function to apply the transformation
+    result = re.sub(pattern, lambda match: f'<code>{transport_chord(match.group(1), tune)}</code>', text)
+    
+    return result
+
+
 
 # Test
-"""
-s = md_to_Song("wonderwall")
-print(s.name)
-print(s.artist)
-print(s.tune)
-print(s.song_html)
-"""
-s = md_to_Song("stick_season-noah_kahan")
-print(s.song_html)
+s = md_to_Song("no_ho_entens-els_amics_de_les_arts")
+print(transport_song(s.song_html, 3))
