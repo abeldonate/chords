@@ -1,19 +1,31 @@
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-  </head>
-  <body>
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h1 class="title">{{ song.name }}</h1>
-        <h2 class="title">{{ song.artist }}</h2>
-        <h3 class="title">Tune: {{ song.tune }}</h3>
-            <div class="text">
-                <div class="columns">
-					<div class="column has-text-left">
-                        <div class="text">{{ song.song_html|safe }}<div> 
-					</div>
-					<div class="column"></div>
-				</div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns">
+
+        <div class="column is-two-thirds">
+          <p class="title is-2">{{ song.name }}</p>
+          <p class="subtitle is-4">{{ song.artist }} <br> Tune: {{ song.tune }}</p>
+        </div>
+
+        <div class="column has-text-right is-one-third">
+          <div class="buttons">
+            <a class="button is-secondary"
+              href="{{ url_for('page_song', song = song.filename, newtune = sum_tunes(song.tune, -1)) }}">-1</a>
+            <a class="button is-secondary"
+              href="{{ url_for('page_song', song = song.filename, newtune = sum_tunes(song.tune, +1)) }}">+1</a>
+            <a class="button is-primary" href="{{ url_for('page_index') }}">All Songs</a>
+          </div>
+        </div>
       </div>
-    </section>
-  </body>
+
+      <div class="text">{{ song.song_html|safe }}</div>
+
+    </div>
+  </section>
+</body>

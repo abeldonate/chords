@@ -13,7 +13,8 @@ LETTERS = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
 
 
 class Song:
-    def __init__(self, name: str, artist: str, tune: str, song_html: str):
+    def __init__(self, filename: str, name: str, artist: str, tune: str, song_html: str):
+        self.filename = filename
         self.name = name
         self.artist = artist
         self.tune = tune
@@ -21,8 +22,10 @@ class Song:
 
 
 # Transform from name of md file to title
+"""
 def name_to_title(name):
     return name.replace("_", " ").replace("-", " - ").title()
+"""
 
 # Returns the list of songs
 def get_songs_list():
@@ -48,45 +51,28 @@ def get_info_header(header_text: str, target_text: str) -> str:
     title_line = [line for line in header_text.split('\n') if target_text + ": " in line][0]
     return title_line.replace(target_text + ": ", "")
 
-
-def md_to_Song(song: str) -> Song:
-    file_md_path = MD_PATH + song + ".md"
-    with open(file_md_path, 'r') as f:
-        md_text = f.read()
-
-    [md_header, md_song] = md_text.split("---")
-
-    name = get_info_header(md_header, "Name")
-    artist = get_info_header(md_header, "Artist")
-    tune = get_info_header(md_header, "Tune")
-
-    return Song(name = name, artist = artist, tune = tune, song_html = md_to_html(md_song))
-
 def flat_to_sharp(chord):
-    if chord == "Ab" return "G#"
-    if chord == "Bb" return "A#"
-    if chord == "Db" return "C#"
-    if chord == "Eb" return "D#"
-    if chord == "Gb" return "F#"
+    if chord == "Ab": return "G#"
+    if chord == "Bb": return "A#"
+    if chord == "Db": return "C#"
+    if chord == "Eb": return "D#"
+    if chord == "Gb": return "F#"
 
-def transport_chord(chord, tune):
+def transport_chord(chord: str, tune: int):
     if len(chord) == 1:
         return LETTERS[ (LETTERS.index(chord) + tune) % 12]
     elif chord[1] == "#":
-        let = chord[0:1]
+        let = chord[0:2]
         return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
     elif chord[1] == "b":
-        let = flat_to_sharp(chord[0:1])
+        let = flat_to_sharp(chord[0:2])
         return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
-    
     let = chord[0]
     return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
     
 
-    
-
 #Transports html to a target relative tune (in semitones)
-def transport_song(text, tune): 
+def transport_song(text: str, tune: int): 
     pattern = r'<code>(.*?)</code>'
     
     # Use re.sub with a lambda function to apply the transformation
@@ -95,7 +81,25 @@ def transport_song(text, tune):
     return result
 
 
+def md_to_Song(song: str, newtune: int) -> Song:
+    file_md_path = MD_PATH + song + ".md"
+    with open(file_md_path, 'r') as f:
+        md_text = f.read()
+
+    [md_header, md_song] = md_text.split("---")
+
+    filename = song
+    name = get_info_header(md_header, "Name")
+    artist = get_info_header(md_header, "Artist")
+    #tune = get_info_header(md_header, "Tune")
+    song_html = transport_song(md_to_html(md_song), newtune)
+
+    return Song(filename = filename, name = name, artist = artist, tune = newtune, song_html = song_html)
+
+
+def sum_tunes(t1, t2):
+    return t1+t2
 
 # Test
-s = md_to_Song("no_ho_entens-els_amics_de_les_arts")
-print(transport_song(s.song_html, 3))
+#s = md_to_Song("no_ho_entens-els_amics_de_les_arts")
+#print(s.filename)

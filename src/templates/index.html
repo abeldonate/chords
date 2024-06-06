@@ -1,20 +1,33 @@
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-  </head>
-  <body>
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h1 class="title">Chords</h1>
-            <div class="text">
-                <label class="label">List of chords</label>
-                <div class="columns">
-					<div class="column has-text-left is-two-thirds">
-                        {% for song in songs_list %}
-						<a class="button is-primary is-medium is-fullwidth my-3" href="{{ song }}"">{{ name_to_title(song) }}</a>
-                        {% endfor %}
-					</div>
-					<div class="column"></div>
-				</div>
-      </div>
-    </section>
-  </body>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <a class="title">Chords</a>
+
+      <table class="table is-fullwidth is-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Artist</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for song in songs_list %}
+          <tr>
+            <td>
+              <a href="{{ url_for('page_song', song = song, newtune=0)}}">{{ md_to_Song(song, 0).name }}</a>
+            </td>
+            <td>
+              <a>{{ md_to_Song(song, 0).artist }}</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  </section>
+</body>
