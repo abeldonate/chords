@@ -13,8 +13,8 @@
           <p class="subtitle is-4">{{ song.artist }} <br> Tune: {{ song.tune }}</p>
         </div>
 
-        <div class="column has-text-right is-one-third">
-          <div class="buttons">
+        <div class="column is-one-third">
+          <div class="buttons is-right">
             <a class="button is-secondary"
               href="{{ url_for('page_song', song = song.filename, newtune = sum_tunes(song.tune, -1)) }}">-1</a>
             <a class="button is-secondary"

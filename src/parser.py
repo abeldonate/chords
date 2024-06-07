@@ -37,7 +37,7 @@ def get_songs_list():
     return songs_list
 
 
-def md_to_html(md_song) -> str:
+def md_to_html(md_song: str) -> str:
     # Parse <Chord>
     pattern = rf'{CHORD_MD_OPEN}(.*?){CHORD_MD_CLOSE}'
     html_text = re.sub(pattern, lambda match: f'{CHORD_HTML_OPEN}{match.group(1)}{CHORD_HTML_CLOSE}', md_song)
@@ -53,14 +53,14 @@ def get_info_header(header_text: str, target_text: str) -> str:
     title_line = [line for line in header_text.split('\n') if target_text + ": " in line][0]
     return title_line.replace(target_text + ": ", "").title()
 
-def flat_to_sharp(chord):
+def flat_to_sharp(chord: str) -> str:
     if chord == "Ab": return "G#"
     if chord == "Bb": return "A#"
     if chord == "Db": return "C#"
     if chord == "Eb": return "D#"
     if chord == "Gb": return "F#"
 
-def transport_chord(chord: str, tune: int):
+def transport_chord(chord: str, tune: int) -> str:
     if len(chord) == 1:
         return KEYS[ (KEYS.index(chord) + tune) % 12]
     elif chord[1] == "#":
@@ -74,7 +74,7 @@ def transport_chord(chord: str, tune: int):
     
 
 #Transports html to a target relative tune (in semitones)
-def transport_song(text: str, tune: int): 
+def transport_song(text: str, tune: int) -> str: 
     pattern = rf'{CHORD_HTML_OPEN}(.*?){CHORD_HTML_CLOSE}'
     
     # Use re.sub with a lambda function to apply the transformation
@@ -89,6 +89,7 @@ def md_to_Song(song: str, newtune: int) -> Song:
         md_text = f.read()
 
     [md_header, md_song] = md_text.split("---")
+    md_song = md_song.lstrip()
 
     filename = song
     name = get_info_header(md_header, "Name")
@@ -99,7 +100,7 @@ def md_to_Song(song: str, newtune: int) -> Song:
     return Song(filename = filename, name = name, artist = artist, tune = newtune, song_html = song_html)
 
 
-def sum_tunes(t1, t2):
+def sum_tunes(t1: int, t2: int) -> int:
     return t1+t2
 
 # Test

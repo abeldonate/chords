@@ -5,7 +5,19 @@
 <body>
   <section class="section">
     <div class="container is-max-desktop">
-      <a class="title">{{ artist }}</a>
+      
+      <div class="columns">
+
+        <div class="column is-two-thirds">
+          <p class="title is-2">{{ artist }}</p>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="buttons is-right">
+            <a class="button is-primary is-right" href="{{ url_for('page_index') }}">All Songs</a>
+          </div>
+        </div>
+      </div>
 
       <table class="table is-fullwidth is-striped">
         <thead>
