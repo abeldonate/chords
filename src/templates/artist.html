@@ -5,26 +5,24 @@
 <body>
   <section class="section">
     <div class="container is-max-desktop">
-      <a class="title">Chords</a>
+      <a class="title">{{ artist }}</a>
 
       <table class="table is-fullwidth is-striped">
         <thead>
           <tr>
             <th>Name</th>
-            <th>Artist</th>
           </tr>
         </thead>
 
         <tbody>
           {% for song in songs_list %}
+          {% if md_to_Song(song, 0).artist == artist %}
           <tr>
             <td>
               <a href="{{ url_for('page_song', song = song, newtune=0)}}">{{ md_to_Song(song, 0).name }}</a>
             </td>
-            <td>
-              <a href="{{ url_for('page_artist', artist = to_underscore(md_to_Song(song, 0).artist))}}">{{ md_to_Song(song, 0).artist }}</a>
-            </td>
           </tr>
+          {% endif %}
           {% endfor %}
         </tbody>
       </table>

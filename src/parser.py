@@ -7,10 +7,11 @@ with open('config.yaml', 'r') as f:
     config_data = yaml.load(f, Loader=yaml.SafeLoader)
 
 MD_PATH = config_data.get("MD_PATH")
-CHORD_OPEN = config_data.get("CHORD_OPEN")
-CHORD_CLOSE = config_data.get("CHORD_CLOSE")
-LETTERS = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
-
+CHORD_MD_OPEN = config_data.get("CHORD_MD_OPEN")
+CHORD_MD_CLOSE = config_data.get("CHORD_MD_CLOSE")
+CHORD_HTML_OPEN = config_data.get("CHORD_HTML_OPEN")
+CHORD_HTML_CLOSE = config_data.get("CHORD_HTML_CLOSE")
+KEYS = config_data.get("KEYS")
 
 class Song:
     def __init__(self, filename: str, name: str, artist: str, tune: str, song_html: str):
@@ -21,11 +22,12 @@ class Song:
         self.song_html = song_html
 
 
-# Transform from name of md file to title
-"""
-def name_to_title(name):
-    return name.replace("_", " ").replace("-", " - ").title()
-"""
+def to_spaces(text):
+    return text.replace("_"," ").title()
+
+def to_underscore(text):
+    return text.replace(" ", "_").lower()
+
 
 # Returns the list of songs
 def get_songs_list():
@@ -34,11 +36,11 @@ def get_songs_list():
         songs_list[i] = song.removesuffix(".md")
     return songs_list
 
-    
+
 def md_to_html(md_song) -> str:
     # Parse <Chord>
-    pattern = rf'{CHORD_OPEN}(.*?){CHORD_CLOSE}'
-    html_text = re.sub(pattern, lambda match: f'<code>{match.group(1)}</code>', md_song)
+    pattern = rf'{CHORD_MD_OPEN}(.*?){CHORD_MD_CLOSE}'
+    html_text = re.sub(pattern, lambda match: f'{CHORD_HTML_OPEN}{match.group(1)}{CHORD_HTML_CLOSE}', md_song)
 
     # Leave spaces
     html_text = "<pre>\n" + html_text + "\n</pre>"
@@ -49,7 +51,7 @@ def md_to_html(md_song) -> str:
 # Gets the info with the field target_text
 def get_info_header(header_text: str, target_text: str) -> str:
     title_line = [line for line in header_text.split('\n') if target_text + ": " in line][0]
-    return title_line.replace(target_text + ": ", "")
+    return title_line.replace(target_text + ": ", "").title()
 
 def flat_to_sharp(chord):
     if chord == "Ab": return "G#"
@@ -60,23 +62,23 @@ def flat_to_sharp(chord):
 
 def transport_chord(chord: str, tune: int):
     if len(chord) == 1:
-        return LETTERS[ (LETTERS.index(chord) + tune) % 12]
+        return KEYS[ (KEYS.index(chord) + tune) % 12]
     elif chord[1] == "#":
         let = chord[0:2]
-        return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
+        return chord.replace(let, KEYS[ (KEYS.index(let) + tune) % 12])
     elif chord[1] == "b":
         let = flat_to_sharp(chord[0:2])
-        return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
+        return chord.replace(let, KEYS[ (KEYS.index(let) + tune) % 12])
     let = chord[0]
-    return chord.replace(let, LETTERS[ (LETTERS.index(let) + tune) % 12])
+    return chord.replace(let, KEYS[ (KEYS.index(let) + tune) % 12])
     
 
 #Transports html to a target relative tune (in semitones)
 def transport_song(text: str, tune: int): 
-    pattern = r'<code>(.*?)</code>'
+    pattern = rf'{CHORD_HTML_OPEN}(.*?){CHORD_HTML_CLOSE}'
     
     # Use re.sub with a lambda function to apply the transformation
-    result = re.sub(pattern, lambda match: f'<code>{transport_chord(match.group(1), tune)}</code>', text)
+    result = re.sub(pattern, lambda match: f'{CHORD_HTML_OPEN}{transport_chord(match.group(1), tune)}{CHORD_HTML_CLOSE}', text)
     
     return result
 

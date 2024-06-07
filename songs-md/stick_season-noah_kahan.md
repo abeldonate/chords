@@ -1,5 +1,5 @@
 Name: Stick Season
-Artist: Noah Kahan
+Artist: Noah kahan
 Tune: 0
 
 ---

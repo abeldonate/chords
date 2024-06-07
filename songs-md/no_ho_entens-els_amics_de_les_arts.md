@@ -1,5 +1,5 @@
 Name: No ho entens
-Artist: Els amics de les arts
+Artist: Els Amics De Les Arts
 Tune: 0
 
 ---
