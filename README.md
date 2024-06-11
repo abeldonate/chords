@@ -1,10 +1,10 @@
 # Chords
 
-An app that displays and transport any custom song with chords.
+An app that displays and transports any custom song with chords.
 
 ## Motivation
-There are plenty of online webs and apps for guitar/piano/ukulele tabs for the most celebrated songs. However, as a guitar apprentice, I want something very simple, which can tackle the main problebs I notice in these programs:
-- Some less known songs are not there (or are distributed in different ones)
+There are plenty of online websites and apps for guitar/piano/ukulele tabs for the most celebrated songs. However, as a guitar apprentice, I want something straightforward, which can tackle the main problems I notice in these programs:
+- Some less-known songs are not there (or are distributed in different ones)
 - Transportation is not allowed in the majority of them (or is premium)
 - Some of them need registration
 - Plenty of ads
@@ -34,7 +34,7 @@ The fields `Name` and `Artist` are important for displaying the list of all the 
 ## Installation
 Clone the repository
 
-    $ git clone (falta)
+    $ git clone https://github.com/abeldonate/chords.git
 
 Setup the environment
 

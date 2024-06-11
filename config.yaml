@@ -1,8 +1,8 @@
 MD_PATH: "songs-md/"
 CHORD_MD_OPEN: "<"
 CHORD_MD_CLOSE: ">"
-CHORD_HTML_OPEN: "<code>"
-CHORD_HTML_CLOSE: "</code>"
+CHORD_HTML_OPEN: "<strong>"
+CHORD_HTML_CLOSE: "</strong>  "
 
 KEYS: 
   - "A"
