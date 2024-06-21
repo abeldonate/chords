@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
@@ -24,12 +25,28 @@
               href="{{ url_for('page_song', song = song.filename, newtune = sum_tunes(song.tune, +1)) }}">+1</a>
             <a class="button is-primary" href="{{ url_for('page_index') }}">All Songs</a>
           </div>
+          <nav class="navbar-end" role="navigation" aria-label="main navigation">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More info
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  {{ song.header|safe}}
+                </a>
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
 
-      <div class="content"><p>{{ song.song_html|safe }}</p></div>
+      <div class="content">
+        <p>{{ song.song_html|safe }}</p>
+      </div>
 
     </div>
   </section>
 </body>
+
 </html>

@@ -14,11 +14,12 @@ CHORD_HTML_CLOSE = config_data.get("CHORD_HTML_CLOSE")
 KEYS = config_data.get("KEYS")
 
 class Song:
-    def __init__(self, filename: str, name: str, artist: str, tune: str, song_html: str):
+    def __init__(self, filename: str, name: str, artist: str, tune: str, header: str, song_html: str):
         self.filename = filename
         self.name = name
         self.artist = artist
         self.tune = tune
+        self.header = header
         self.song_html = song_html
 
 
@@ -89,6 +90,7 @@ def md_to_Song(song: str, newtune: int) -> Song:
 
     [md_header, md_song] = md_text.split("---")
     md_song = md_song.lstrip()
+    md_header = "<pre>\n" + md_header + "\n</pre>"
 
     filename = song
     name = get_info_header(md_header, "Name")
@@ -96,7 +98,7 @@ def md_to_Song(song: str, newtune: int) -> Song:
     tune = int(get_info_header(md_header, "Tune")) + newtune
     song_html = transport_song(md_to_html(md_song), newtune)
 
-    return Song(filename = filename, name = name, artist = artist, tune = tune, song_html = song_html)
+    return Song(filename = filename, name = name, artist = artist, tune = tune, header = md_header, song_html = song_html)
 
 
 def sum_tunes(t1: int, t2: int) -> int:

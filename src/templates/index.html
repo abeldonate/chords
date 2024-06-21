@@ -6,7 +6,30 @@
 <body>
   <section class="section">
     <div class="container is-max-desktop">
-      <a class="title">Chords</a>
+
+      <div class="columns">
+
+        <div class="column is-two-thirds">
+          <a class="title">Chords</a>
+        </div>
+
+        <div class="column is-one-third">
+          <nav class="navbar-end" role="navigation" aria-label="main navigation">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                About
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="{{ url_for('about') }}">How this page works</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+
+
+
 
       <table class="table is-fullwidth is-striped">
         <thead>
@@ -20,10 +43,12 @@
           {% for song in songs_list %}
           <tr>
             <td>
-              <a href="{{ url_for('page_song', song = song, newtune=md_to_Song(song, 0).tune)}}">{{ md_to_Song(song, 0).name }}</a>
+              <a href="{{ url_for('page_song', song = song, newtune=md_to_Song(song, 0).tune)}}">{{ md_to_Song(song,
+                0).name }}</a>
             </td>
             <td>
-              <a href="{{ url_for('page_artist', artist = to_underscore(md_to_Song(song, 0).artist))}}">{{ md_to_Song(song, 0).artist }}</a>
+              <a href="{{ url_for('page_artist', artist = to_underscore(md_to_Song(song, 0).artist))}}">{{
+                md_to_Song(song, 0).artist }}</a>
             </td>
           </tr>
           {% endfor %}

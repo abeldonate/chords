@@ -25,6 +25,10 @@ def page_artist(artist):
 def page_song(song, newtune):
     return render_template('song.html', song = md_to_Song(song, int(newtune) - md_to_Song(song, 0).tune), newtune = newtune, sum_tunes = sum_tunes)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='0.0.0.0')
