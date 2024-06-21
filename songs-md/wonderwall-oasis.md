@@ -1,6 +1,6 @@
 Name: Wonderwall
 Artist: Oasis
-Tune: 2+
+Tune: +2
 
 ---
 

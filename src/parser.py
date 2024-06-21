@@ -31,7 +31,7 @@ def to_underscore(text):
 
 # Returns the list of songs
 def get_songs_list():
-    songs_list = os.listdir(MD_PATH)
+    songs_list = [f for f in os.listdir(MD_PATH) if os.path.isfile(os.path.join(MD_PATH,f))]
     for i, song in enumerate(songs_list):
         songs_list[i] = song.removesuffix(".md")
     return songs_list
@@ -77,7 +77,6 @@ def transport_chord(chord: str, tune: int) -> str:
 def transport_song(text: str, tune: int) -> str: 
     pattern = rf'{CHORD_HTML_OPEN}(.*?){CHORD_HTML_CLOSE}'
     
-    # Use re.sub with a lambda function to apply the transformation
     result = re.sub(pattern, lambda match: f'{CHORD_HTML_OPEN}{transport_chord(match.group(1), tune)}{CHORD_HTML_CLOSE}', text)
     
     return result
@@ -94,10 +93,10 @@ def md_to_Song(song: str, newtune: int) -> Song:
     filename = song
     name = get_info_header(md_header, "Name")
     artist = get_info_header(md_header, "Artist")
-    #tune = get_info_header(md_header, "Tune")
+    tune = int(get_info_header(md_header, "Tune")) + newtune
     song_html = transport_song(md_to_html(md_song), newtune)
 
-    return Song(filename = filename, name = name, artist = artist, tune = newtune, song_html = song_html)
+    return Song(filename = filename, name = name, artist = artist, tune = tune, song_html = song_html)
 
 
 def sum_tunes(t1: int, t2: int) -> int:
@@ -106,3 +105,7 @@ def sum_tunes(t1: int, t2: int) -> int:
 # Test
 #s = md_to_Song("no_ho_entens-els_amics_de_les_arts")
 #print(s.filename)
+
+#print(get_songs_list())
+
+

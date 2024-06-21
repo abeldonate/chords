@@ -23,7 +23,7 @@ def page_artist(artist):
 
 @app.route('/<song>/<newtune>')
 def page_song(song, newtune):
-    return render_template('song.html', song = md_to_Song(song, int(newtune)), newtune = newtune, sum_tunes = sum_tunes)
+    return render_template('song.html', song = md_to_Song(song, int(newtune) - md_to_Song(song, 0).tune), newtune = newtune, sum_tunes = sum_tunes)
 
 
 if __name__ == '__main__':

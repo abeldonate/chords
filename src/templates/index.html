@@ -20,7 +20,7 @@
           {% for song in songs_list %}
           <tr>
             <td>
-              <a href="{{ url_for('page_song', song = song, newtune=0)}}">{{ md_to_Song(song, 0).name }}</a>
+              <a href="{{ url_for('page_song', song = song, newtune=md_to_Song(song, 0).tune)}}">{{ md_to_Song(song, 0).name }}</a>
             </td>
             <td>
               <a href="{{ url_for('page_artist', artist = to_underscore(md_to_Song(song, 0).artist))}}">{{ md_to_Song(song, 0).artist }}</a>
