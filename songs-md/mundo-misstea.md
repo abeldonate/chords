@@ -18,10 +18,12 @@ en el miedo
 
        <Em>                             <C>
 Porque dicen que nadie sabe lo que es vivir
-<G>                   <B7>
-Dicen que nadie conoce ???
-<Em>
-
+<G>                            <B7>
+Dicen que solo conocen la servidumbre
+   <Em>                <C>
+El cielo azul, pero un manto gris,
+    <G>                       <B7>
+que cubre las cimas de cada cumbre
 
 [CHORUS]
           <Em>                 <C>
@@ -32,3 +34,11 @@ Vivir en nada, odiar profundo
 El sentir a fuego, el mirar de filo
        <G>                                 <B7> 
 Las verdades, crueldades infames de este mundo
+
+
+
+          <Em>           <C>
+De este mundo, de este mundo
+          <G>                                           <B7>
+De este mundo, (verdades, crueldades infames) de este mundo
+
