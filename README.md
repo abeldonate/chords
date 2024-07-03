@@ -45,3 +45,6 @@ Write a couple of tabs files in the folder specified in the variable `MD_PATH` i
 Run the program with
 
     $ make
+
+## Requirements
+Must have installed python3, pip, make and gunicorn (in case of server)
