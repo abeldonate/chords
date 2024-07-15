@@ -3,7 +3,7 @@ Artist: Misstea
 Tune: -1
 Key: Em
 
----
++++
 
 <Em>                      <C>
 Quiero olvidar, lo que un día soñé 

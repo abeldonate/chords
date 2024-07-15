@@ -19,7 +19,7 @@ The folder specified as `MD_PATH` in the config file must contain `.md` files wi
     Artist: Noah Kahan
     Tune: 0
     
-    ---
+    +++
            <A>
     As you promised me that I was more than all the miles combined
                   <E>

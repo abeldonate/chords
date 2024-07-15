@@ -12,6 +12,7 @@ CHORD_MD_CLOSE = config_data.get("CHORD_MD_CLOSE")
 CHORD_HTML_OPEN = config_data.get("CHORD_HTML_OPEN")
 CHORD_HTML_CLOSE = config_data.get("CHORD_HTML_CLOSE")
 KEYS = config_data.get("KEYS")
+SEPARATOR = config_data.get("SEPARATOR")
 
 class Song:
     def __init__(self, filename: str, name: str, artist: str, tune: str, header: str, song_html: str):
@@ -88,7 +89,7 @@ def md_to_Song(song: str, newtune: int) -> Song:
     with open(file_md_path, 'r') as f:
         md_text = f.read()
 
-    [md_header, md_song] = md_text.split("---")
+    [md_header, md_song] = md_text.split(SEPARATOR)
     md_song = md_song.lstrip()
     md_header = "<pre>\n" + md_header + "\n</pre>"
 

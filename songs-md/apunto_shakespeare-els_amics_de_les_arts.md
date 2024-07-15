@@ -2,7 +2,7 @@ Name: Apunto Shakespeare
 Artist: Els Amics de Les Arts
 Tune: 0
 
----
++++
 
    <Am>       <F>       <G>
 Li juro pel que més estimo 

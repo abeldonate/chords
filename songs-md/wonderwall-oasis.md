@@ -2,7 +2,7 @@ Name: Wonderwall
 Artist: Oasis
 Tune: +2
 
----
++++
 
 `Em`     `G`
 Today is gonna be the day

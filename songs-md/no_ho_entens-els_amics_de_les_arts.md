@@ -2,7 +2,7 @@ Name: No ho entens
 Artist: Els Amics De Les Arts
 Tune: 0
 
----
++++
 
 <C#m> <B> <E> <E>
 <C#m> <B> <A> <A>
