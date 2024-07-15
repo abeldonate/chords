@@ -47,4 +47,4 @@ Run the program with
     $ make
 
 ## Requirements
-Must have installed python3, pip, make and gunicorn (in case of server)
+Must have installed python3, pip and make

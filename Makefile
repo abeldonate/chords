@@ -8,9 +8,6 @@ run: $(VENV)/bin/activate
 parse: $(VENV)/bin/activate
 	$(PYTHON) src/parser.py
 
-bind: gunicorn --bind 0.0.0.0:5000 src.wsgi:app
-
- #$(VENV)/bin/activate: requirements.txt
 setup: requirements.txt
 	python3 -m venv $(VENV)
 	$(PIP) install -r requirements.txt
