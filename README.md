@@ -3,6 +3,7 @@
 An app that displays and transports any custom song with chords.
 
 ## Motivation
+
 There are plenty of online websites and apps for guitar/piano/ukulele tabs for the most celebrated songs. However, as a guitar apprentice, I want something straightforward, which can tackle the main problems I notice in these programs:
 - Some less-known songs are not there (or are distributed in different ones)
 - Transportation is not allowed in the majority of them (or is premium)
@@ -13,6 +14,7 @@ For these reasons I decided to code this simple app.
 
 
 ## Working principle
+
 The folder specified as `MD_PATH` in the config file must contain `.md` files with the desired songs. The format of the file must be like this:
 
     Name: Stick Season
@@ -32,6 +34,7 @@ The folder specified as `MD_PATH` in the config file must contain `.md` files wi
 The fields `Name` and `Artist` are important for displaying the list of all the songs in the main page. The format of the chords must be enclosed with `<>`.
 
 ## Installation
+
 Clone the repository
 
     $ git clone https://github.com/abeldonate/chords.git
@@ -47,4 +50,5 @@ Run the program with
     $ make
 
 ## Requirements
-Must have installed python3, pip and make
+
+Must have installed python, pip, virtualenv and make
