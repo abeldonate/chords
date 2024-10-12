@@ -65,12 +65,12 @@ def flat_to_sharp(chord: str) -> str:
 def transport_chord(chord: str, tune: int) -> str:
     if len(chord) == 1:
         return KEYS[ (KEYS.index(chord) + tune) % 12]
-    elif chord[1] == "#":
+    elif chord[1] == '#':
         let = chord[0:2]
         return chord.replace(let, KEYS[ (KEYS.index(let) + tune) % 12])
-    elif chord[1] == "b":
+    elif chord[1] == 'b':
         let = flat_to_sharp(chord[0:2])
-        return chord.replace(let, KEYS[ (KEYS.index(let) + tune) % 12])
+        return chord.replace(chord[0:2], KEYS[ (KEYS.index(let) + tune) % 12])
     let = chord[0]
     return chord.replace(let, KEYS[ (KEYS.index(let) + tune) % 12])
     
@@ -110,5 +110,7 @@ def sum_tunes(t1: int, t2: int) -> int:
 #print(s.filename)
 
 #print(get_songs_list())
+
+print(transport_chord("Ab", 1))
 
 
