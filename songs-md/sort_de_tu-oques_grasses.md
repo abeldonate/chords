@@ -2,7 +2,7 @@ Name: Sort de Tu
 Artist: Oques Grasses
 Tune: 0
 Key: Eb
-Recomended tune: -3 
+Recommended tune: -3 
 
 +++
 
