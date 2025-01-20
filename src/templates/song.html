@@ -41,6 +41,26 @@
         </div>
       </div>
 
+      <div class="columns">
+
+        <div class="column is-one-third">
+          <nav class="navbar-end" role="navigation" aria-label="main navigation">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Chords positions
+              </a>
+              <div class="navbar-dropdown">
+                {% for chord in chords_positions %}
+                <a class="navbar-item">
+                  {{ chord.name|safe}}
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
       <div class="content">
         <p>{{ song.song_html|safe }}</p>
       </div>

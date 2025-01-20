@@ -1,4 +1,5 @@
 MD_PATH: "songs-md/"
+POSITIONS_PATH: "chords-positions/"
 CHORD_MD_OPEN: "<"
 CHORD_MD_CLOSE: ">"
 CHORD_HTML_OPEN: "<strong>"

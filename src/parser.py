@@ -7,6 +7,7 @@ with open('config.yaml', 'r') as f:
     config_data = yaml.load(f, Loader=yaml.SafeLoader)
 
 MD_PATH = config_data.get("MD_PATH")
+POSITIONS_PATH = config_data.get("POSITIONS_PATH")
 CHORD_MD_OPEN = config_data.get("CHORD_MD_OPEN")
 CHORD_MD_CLOSE = config_data.get("CHORD_MD_CLOSE")
 CHORD_HTML_OPEN = config_data.get("CHORD_HTML_OPEN")
@@ -105,12 +106,23 @@ def md_to_Song(song: str, newtune: int) -> Song:
 def sum_tunes(t1: int, t2: int) -> int:
     return t1+t2
 
-# Test
-#s = md_to_Song("no_ho_entens-els_amics_de_les_arts")
-#print(s.filename)
 
-#print(get_songs_list())
+##########################################
+#Handle of the chords positions
+##########################################
 
-print(transport_chord("Ab", 1))
+class ChordPosition:
+    def __init__(self, filename: str, name: str, text : str):
+        self.filename = filename
+        self.name = name
+        self.text = text
 
+
+def get_positions_list():
+    positions_list_filename = [f for f in os.listdir(POSITIONS_PATH) if os.path.isfile(os.path.join(POSITIONS_PATH,f))]
+    positions_list = [] 
+    for i, filename in enumerate(positions_list_filename):
+        newchordposition = ChordPosition(filename = filename, name = filename.removesuffix(".txt"), text = open(POSITIONS_PATH + filename, 'r').read())
+        positions_list.append(newchordposition)
+    return positions_list
 

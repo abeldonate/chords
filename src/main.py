@@ -1,7 +1,7 @@
 import os
 import datetime
 from flask import Flask, render_template, url_for
-from parser import md_to_Song, get_songs_list, sum_tunes, to_spaces, to_underscore
+from parser import md_to_Song, get_songs_list, sum_tunes, to_spaces, to_underscore, get_positions_list
 
 template_path = os.path.abspath("src/templates")
 static_path = os.path.abspath("src/static")
@@ -23,7 +23,7 @@ def page_artist(artist):
 
 @app.route('/chords/<song>/<newtune>')
 def page_song(song, newtune):
-    return render_template('song.html', song = md_to_Song(song, int(newtune) - md_to_Song(song, 0).tune), newtune = newtune, sum_tunes = sum_tunes)
+    return render_template('song.html', song = md_to_Song(song, int(newtune) - md_to_Song(song, 0).tune), newtune = newtune, sum_tunes = sum_tunes, chords_positions = get_positions_list())
 
 @app.route('/chords/about')
 def about():
