@@ -6,7 +6,7 @@ run: $(VENV)/bin/activate
 	$(PYTHON) src/main.py
 
 parse: $(VENV)/bin/activate
-	$(PYTHON) src/parser.py
+	$(PYTHON) src/parse_song.py
 
 setup: requirements.txt
 	python3 -m venv $(VENV)

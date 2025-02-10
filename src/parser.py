@@ -34,7 +34,7 @@ def to_underscore(text):
 
 # Returns the list of songs
 def get_songs_list():
-    songs_list = [f for f in os.listdir(MD_PATH) if os.path.isfile(os.path.join(MD_PATH,f))]
+    songs_list = sorted([f for f in os.listdir(MD_PATH) if os.path.isfile(os.path.join(MD_PATH,f))])
     for i, song in enumerate(songs_list):
         songs_list[i] = song.removesuffix(".md")
     return songs_list
