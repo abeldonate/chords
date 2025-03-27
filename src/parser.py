@@ -16,7 +16,7 @@ KEYS = config_data.get("KEYS")
 SEPARATOR = config_data.get("SEPARATOR")
 
 class Song:
-    def __init__(self, filename: str, name: str, artist: str, tune: str, header: str, song_html: str):
+    def __init__(self, filename: str, name: str, artist: list[str], tune: str, header: str, song_html: str):
         self.filename = filename
         self.name = name
         self.artist = artist
@@ -96,6 +96,7 @@ def md_to_Song(song: str, newtune: int) -> Song:
 
     filename = song
     name = get_info_header(md_header, "Name")
+    #artist = get_info_header(md_header, "Artist").split(", ")
     artist = get_info_header(md_header, "Artist")
     tune = int(get_info_header(md_header, "Tune")) + newtune
     song_html = transport_song(md_to_html(md_song), newtune)
