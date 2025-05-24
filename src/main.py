@@ -13,19 +13,19 @@ app = Flask(
 )
 
 
-@app.route('/chords')
+@app.route('/')
 def page_index():
     return render_template('index.html', songs_list = get_songs_list(), md_to_Song = md_to_Song, to_underscore = to_underscore)
 
-@app.route('/chords/<artist>')
+@app.route('/<artist>')
 def page_artist(artist):
     return render_template('artist.html', artist = to_spaces(artist), songs_list = get_songs_list(), md_to_Song = md_to_Song)
 
-@app.route('/chords/<song>/<newtune>')
+@app.route('/<song>/<newtune>')
 def page_song(song, newtune):
     return render_template('song.html', song = md_to_Song(song, int(newtune) - md_to_Song(song, 0).tune), newtune = newtune, sum_tunes = sum_tunes, chords_positions = get_positions_list())
 
-@app.route('/chords/about')
+@app.route('/about')
 def about():
     return render_template('about.html')
 
